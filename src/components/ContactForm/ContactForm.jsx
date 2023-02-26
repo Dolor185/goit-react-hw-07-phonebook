@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import * as contactsOperations from 'redux/contacts/contactsOperations';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -37,7 +37,7 @@ export const ContactForm = () => {
     if (contactСomparison(name)) {
       toast.error(`${name} is already in contacts`);
     } else {
-      dispatch(addContact(contact));
+      dispatch(contactsOperations.addContact(contact));
       setName('');
       setNumber('');
     }
